@@ -3,6 +3,7 @@ package com.example.kiosk
 
 fun main(){
     var myKiosk = Kiosk()
+    var myKiosk2:Kiosk
 
     myKiosk.burgerList.add(Burger("불불불불싸이버거",6700))
     myKiosk.burgerList.add(Burger("언빌리버블버거",5800))
@@ -83,7 +84,7 @@ class Kiosk {
                     break
                 }
                 in 1..inputList.size -> {
-                    println("\n장바구니에 담았습니다.")
+                    println("\n장바구니에 담았습니다.\n")
                 }
                 else -> println("\n다시 입력해주세요.")
             }
