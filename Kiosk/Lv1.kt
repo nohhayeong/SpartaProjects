@@ -8,10 +8,7 @@ fun main(){
 }
 
 class Kiosk {
-    enum class State { Main, Detail }
     enum class Detail(var number:Int) { Burger(5), Chicken(4), Side(3), Drink(2) }
-
-    var currentState = State.Main
 
     fun StartKiosk(){
         PrintMainMenu()
@@ -30,7 +27,6 @@ class Kiosk {
                     break
                 }
                 in 1..4 -> {
-                    currentState = State.Detail
                     MoveDetailPage(inputValue)
                     break
                 }
