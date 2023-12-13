@@ -2,8 +2,7 @@ package com.example.kiosk
 
 
 fun main(){
-    var myKiosk = Kiosk()
-    var myKiosk2:Kiosk
+    val myKiosk = Kiosk()
 
     myKiosk.burgerList.add(Burger("불불불불싸이버거",6700))
     myKiosk.burgerList.add(Burger("언빌리버블버거",5800))
@@ -35,12 +34,12 @@ class Kiosk {
         PrintMainMenu()
     }
 
-    fun PrintMainMenu() {
+    private fun PrintMainMenu() {
         println("\n[1] 버거\n[2] 치킨\n[3] 사이드\n[4] 음료\n[0] 종료하기\n")
         println("카테고리를 선택해주세요.")
 
         while (true){
-            var inputValue = readLine()!!.toInt()
+            val inputValue = readLine()!!.toInt()
 
             when(inputValue){
                 0 -> {
@@ -56,7 +55,7 @@ class Kiosk {
         }
     }
 
-    fun handleInput(inputValue:Int){
+    private fun handleInput(inputValue:Int){
         when(inputValue){
             1 -> PrintDetailMenu(1, burgerList)
             2 -> PrintDetailMenu(2, chickenList)
@@ -65,18 +64,16 @@ class Kiosk {
         }
     }
 
-    fun PrintDetailMenu(inputNum:Int, inputList:ArrayList<Menu>) {
+    private fun PrintDetailMenu(inputNum:Int, inputList:ArrayList<Menu>) {
         println("\n${inputNum}번을 선택하셨군요.\n")
 
         while (true){
-            var count = 1
-            for(i in inputList){
-                println("[${count}] ${i.PrintInfo()}")
-                count++
+            for((idx,i) in inputList.withIndex()){
+                println("[${idx+1}] ${i.PrintInfo()}")
             }
             println("[0] 메인으로\n")
             println("장바구니에 담을 메뉴를 선택해주세요.")
-            var inputValue = readLine()!!.toInt()
+            val inputValue = readLine()!!.toInt()
             when(inputValue){
                 0 -> {
                     println("\n메인으로 돌아갑니다.")
