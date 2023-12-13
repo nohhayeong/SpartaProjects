@@ -71,7 +71,7 @@ class Kiosk {
             for((idx,i) in inputList.withIndex()){
                 println("[${idx+1}] ${i.PrintInfo()}")
             }
-            println("[0] 메인으로\n")
+            println("[0] 뒤로 가기\n")
             println("장바구니에 담을 메뉴를 선택해주세요.")
             val inputValue = readLine()!!.toInt()
             when(inputValue){
