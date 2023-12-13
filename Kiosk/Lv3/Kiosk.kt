@@ -84,7 +84,7 @@ class Kiosk {
                     break
                 }
                 in 1..menuList.size -> {
-                    println("${menuList[category.idx+inputValue-1].name}을 장바구니에 담았습니다.\n")
+                    println("${menuList[category.idx+inputValue-1].name} 을(를) 장바구니에 담았습니다.\n")
                 }
                 else -> println("\n다시 입력해주세요.")
             }
