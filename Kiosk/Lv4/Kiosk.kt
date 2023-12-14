@@ -19,7 +19,7 @@ fun main(){
     myKiosk.menuList.add(Drink("사이다",1_000))
     myKiosk.menuList.add(Drink("콜라",1_000))
 
-    myKiosk.StartKiosk()
+    myKiosk.startKiosk()
 }
 
 class Kiosk {
@@ -38,13 +38,12 @@ class Kiosk {
         Drink(12,2)
     }
 
-
-    fun StartKiosk(){
+    fun startKiosk(){
         println("어서오세요!!!")
-        PrintMainMenu()
+        printMainMenu()
     }
 
-    private fun PrintMainMenu() {
+    private fun printMainMenu() {
         println("\n[1] 버거\n[2] 치킨\n[3] 사이드\n[4] 음료\n[5] 장바구니 보기\n[0] 종료하기\n")
         println("카테고리를 선택해주세요.")
         var inputValue:Int
@@ -67,7 +66,7 @@ class Kiosk {
                     break
                 }
                 5 -> {
-                    PrintOrder()
+                    printOrder()
                     break
                 }
                 else -> println("\n번호를 다시 입력해주세요.")
@@ -77,14 +76,14 @@ class Kiosk {
 
     private fun handleInput(inputValue:Int){
         when(inputValue){
-            1 -> PrintDetailMenu(Category.Burger)
-            2 -> PrintDetailMenu(Category.Chicken)
-            3 -> PrintDetailMenu(Category.Side)
-            4 -> PrintDetailMenu(Category.Drink)
+            1 -> printDetailMenu(Category.Burger)
+            2 -> printDetailMenu(Category.Chicken)
+            3 -> printDetailMenu(Category.Side)
+            4 -> printDetailMenu(Category.Drink)
         }
     }
 
-    private fun PrintDetailMenu(category: Category) {
+    private fun printDetailMenu(category: Category) {
         println("\n<${category.name}>")
         var inputValue:Int
 
@@ -104,7 +103,7 @@ class Kiosk {
             when(inputValue){
                 0 -> {
                     println("메인으로 돌아갑니다.")
-                    PrintMainMenu()
+                    printMainMenu()
                     break
                 }
                 in 1..category.cnt -> {
@@ -117,12 +116,11 @@ class Kiosk {
         }
     }
 
-    private fun PrintOrder(){
-        println("\n[Cart]")
-
+    private fun printOrder(){
         var orderPrice = 0
-
-        //메뉴, 가격, 총 가격 보여주기
+        var inputValue:Int
+        
+        println("\n[Cart]")
         for(i in orderList){
             println(i.PrintInfo())
             orderPrice += i.price
@@ -133,8 +131,6 @@ class Kiosk {
         println("[2] 뒤로 가기")
         println("\n주문하시겠습니까?")
 
-        var inputValue:Int
-
         while (true){
             try {
                 inputValue = readLine()!!.toInt()
@@ -144,12 +140,12 @@ class Kiosk {
             }
             when(inputValue){
                 1 -> {
-                    Order(orderPrice)
+                    getOrder(orderPrice)
                     break
                 }
                 2 -> {
                     println("메인으로 돌아갑니다.")
-                    PrintMainMenu()
+                    printMainMenu()
                     break
                 }
                 else -> println("\n번호를 다시 입력해주세요.")
@@ -157,7 +153,7 @@ class Kiosk {
         }
     }
 
-    private fun Order(orderPrice:Int) {
+    private fun getOrder(orderPrice:Int) {
         println("\n[Order]")
         println("현재 잔액 : ${money}원")
         println("주문 금액 : ${orderPrice}원\n")
